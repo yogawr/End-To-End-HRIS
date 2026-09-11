@@ -1,0 +1,269 @@
+        :root {
+            --primary-color: #0d6efd;
+            --sidebar-bg: #f8f9fa;
+        }
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card-form {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .main-nav .nav-link {
+            color: #495057;
+            font-weight: 600;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        .main-nav .nav-link.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+        }
+        .sub-nav .nav-link {
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+            border-radius: 0;
+            padding-left: 15px;
+            margin-bottom: 2px;
+        }
+        .sub-nav .nav-link.active {
+            background-color: #e9ecef;
+            color: var(--primary-color);
+            border-left-color: var(--primary-color);
+            font-weight: 600;
+            box-shadow: none;
+        }
+        .assistant-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-left: 5px solid #2196f3;
+            border-radius: 8px;
+        }
+        .job-card {
+            border: 1px solid #dee2e6;
+            transition: transform 0.2s;
+        }
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        /* --- STYLING KHUSUS TARA VIRTUAL CHAT --- */
+        .tara-floating-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1050;
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+            transition: all 0.3s ease;
+        }
+        .tara-floating-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.6);
+        }
+
+        .tara-chat-box {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 360px;
+            max-width: calc(100vw - 40px);
+            height: 480px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 1050;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.1);
+            animation: fadeInChat 0.3s ease;
+        }
+
+        @keyframes fadeInChat {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tara-chat-header {
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            color: white;
+            padding: 12px 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tara-chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-bubble-tara {
+            background: white;
+            color: #333;
+            padding: 10px 14px;
+            border-radius: 0 12px 12px 12px;
+            font-size: 0.875rem;
+            max-width: 85%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            line-height: 1.4;
+        }
+
+        .chat-bubble-user {
+            background: #0d6efd;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 12px 0 12px 12px;
+            font-size: 0.875rem;
+            max-width: 85%;
+            margin-left: auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            line-height: 1.4;
+        }
+
+        .tara-chat-footer {
+            padding: 12px;
+            background: white;
+            border-top: 1px solid #dee2e6;
+            display: flex;
+            gap: 8px;
+        }
+    .candidate-hero {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 30px 34px;
+        color: #f8fafc;
+        border-radius: 18px;
+        background: linear-gradient(120deg, #102a43 0%, #0b7285 58%, #14919b 100%);
+        box-shadow: 0 18px 40px rgba(15, 42, 67, .18);
+    }
+    .candidate-hero h1 { margin: 7px 0 10px; font-size: clamp(1.8rem, 4vw, 3.2rem); letter-spacing: -.03em; }
+    .candidate-hero p { max-width: 650px; margin: 0; color: rgba(248, 250, 252, .78); }
+    .hero-kicker { color: #8ce0d5; font-size: .72rem; font-weight: 800; letter-spacing: .14em; }
+    .hero-stat { min-width: 150px; padding: 16px 18px; border: 1px solid rgba(255,255,255,.22); border-radius: 14px; background: rgba(255,255,255,.1); text-align: center; }
+    .hero-stat strong { display: block; font-size: 2rem; }
+    .hero-stat span { color: rgba(255,255,255,.75); font-size: .78rem; }
+    @media (max-width: 576px) { .candidate-hero { align-items: flex-start; flex-direction: column; padding: 24px; } .hero-stat { width: 100%; text-align: left; } }
+
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { overflow-x: hidden; }
+    img, input, select, textarea, button { max-width: 100%; }
+    .container { width: min(100% - 24px, 1180px); }
+    .card-form, .assistant-box, .job-card, .tara-chat-box { min-width: 0; }
+    .card-form { overflow: hidden; }
+    .form-control, .form-select { min-width: 0; }
+    textarea { resize: vertical; overflow-wrap: anywhere; }
+    .job-card h5, .job-card p, .card-form h4, .card-form h5 { overflow-wrap: anywhere; word-break: break-word; }
+    .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-responsive table { min-width: 650px; }
+    .tara-chat-footer { min-width: 0; }
+    .tara-chat-footer input { min-width: 0; }
+    @media (max-width: 768px) {
+        .navbar .container { gap: 10px; }
+        .navbar-brand { white-space: normal; line-height: 1.2; }
+        .navbar .small { text-align: right; }
+        .main-nav .nav-link { white-space: normal; text-align: left; }
+        .card-form { padding: 1rem !important; }
+        .tara-floating-btn { right: 14px; bottom: 14px; padding: 11px 14px; }
+        .tara-chat-box { right: 12px; bottom: 78px; width: calc(100vw - 24px); max-width: none; height: min(480px, calc(100vh - 100px)); }
+    }
+    @media (max-width: 420px) {
+        .container { width: min(100% - 16px, 1180px); }
+        .candidate-hero h1 { font-size: 1.8rem; }
+        .hero-stat { min-width: 0; }
+        .hero-actions, .card-form .d-flex { flex-wrap: wrap; }
+        .hero-actions .btn, .card-form .btn { max-width: 100%; white-space: normal; }
+    }
+
+    /* Shared type scale and layout rhythm for candidate screens. */
+    :root {
+        --text-body: 0.9375rem;
+        --text-small: 0.8125rem;
+        --text-label: 0.75rem;
+        --line-body: 1.6;
+        --space-page: clamp(0.75rem, 2vw, 1.5rem);
+    }
+    body { font-size: var(--text-body); line-height: var(--line-body); color: #26364a; }
+    h1, h2, h3, h4, h5, h6 { line-height: 1.3; overflow-wrap: anywhere; }
+    .navbar { min-height: 64px; }
+    .navbar-brand { font-size: 1rem; line-height: 1.25; }
+    .navbar .small, .navbar-text { font-size: var(--text-small); line-height: 1.35; }
+    .main-nav .nav-link { min-height: 42px; padding: 0.65rem 0.75rem; font-size: 0.875rem; line-height: 1.35; }
+    .sub-nav .nav-link { min-height: 34px; padding: 0.4rem 0.65rem 0.4rem 0.8rem; font-size: var(--text-small); line-height: 1.35; }
+    .card-form h4 { font-size: clamp(1.05rem, 1.2vw + 0.7rem, 1.35rem); line-height: 1.35; }
+    .card-form h5 { font-size: 0.95rem; }
+    .form-label, .form-control, .form-select, .btn { font-size: 0.875rem; }
+    .form-label { line-height: 1.35; }
+    .form-control, .form-select { min-height: 42px; line-height: 1.35; }
+    .btn { min-height: 40px; line-height: 1.25; white-space: normal; }
+    .assistant-box { line-height: 1.55; }
+    .assistant-box h5 { font-size: 0.95rem; }
+    .assistant-box p, .job-card p, .chat-bubble-tara, .chat-bubble-user { font-size: var(--text-small); line-height: 1.55; }
+    .job-card h5 { font-size: 1rem; line-height: 1.35; }
+    .table { font-size: var(--text-small); }
+    .table th { font-size: var(--text-label); line-height: 1.3; white-space: nowrap; }
+    .table td { line-height: 1.45; }
+    .candidate-hero h1 { font-size: clamp(1.65rem, 3.2vw, 2.65rem); line-height: 1.18; }
+    .candidate-hero p { font-size: 0.9rem; line-height: 1.55; }
+    .hero-kicker { font-size: 0.6875rem; }
+    .hero-stat strong { font-size: clamp(1.65rem, 4vw, 2rem); }
+    .hero-stat span { font-size: var(--text-label); }
+    .tara-floating-btn { font-size: var(--text-small); }
+    .tara-chat-header { font-size: 0.875rem; }
+    .tara-chat-footer .form-control { font-size: var(--text-small); }
+    @media (min-width: 769px) and (max-width: 1199px) {
+        .container { width: min(100% - 32px, 1040px); }
+        .main-nav .nav-link { font-size: 0.8125rem; }
+        .candidate-hero { padding: 26px 28px; }
+    }
+    @media (max-width: 768px) {
+        body { font-size: 0.90625rem; }
+        .container { width: min(100% - 24px, 680px); }
+        .navbar { min-height: 58px; }
+        .navbar-brand { font-size: 0.9375rem; max-width: 70%; }
+        .main-nav .nav-link { font-size: 0.875rem; }
+        .candidate-hero { gap: 18px; padding: 24px; }
+        .candidate-hero p { font-size: 0.875rem; }
+        .assistant-box { align-items: flex-start !important; }
+        .assistant-box .fs-1 { font-size: 1.75rem !important; }
+        .card-form h4 { font-size: 1.1rem; }
+        .card-form .input-group { flex-wrap: wrap; }
+        .card-form .input-group > * { flex: 1 1 180px; min-width: 0; }
+        .tara-floating-btn span { display: none; }
+        .tara-floating-btn { width: 46px; height: 46px; justify-content: center; padding: 0; }
+    }
+    @media (max-width: 420px) {
+        .container { width: min(100% - 16px, 390px); }
+        .candidate-hero { padding: 20px; border-radius: 14px; }
+        .candidate-hero h1 { font-size: 1.6rem; }
+        .card-form h4 { font-size: 1rem; }
+        .form-label, .form-control, .form-select, .btn { font-size: 0.8125rem; }
+        .main-nav .nav-link { min-height: 40px; font-size: 0.8125rem; }
+        .sub-nav .nav-link { font-size: 0.75rem; }
+        .table-responsive table { min-width: 610px; }
+        .tara-chat-box { font-size: 0.8125rem; }
+    }

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal E-Recruitment | PT Tumbakmas Niagasakti</title>
+    <link rel="stylesheet" href="/recruitment/recruitment.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body data-recruitment-api="api/recruitment/jobs">
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-users-gear me-2"></i>E-Recruitment Portal</a>
+            <span class="text-light small">Didampingi oleh Asisten Virtual <strong>TARA</strong></span>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <!-- Banner / Intro TARA -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="p-3 assistant-box d-flex align-items-center">
+                    <div class="fs-1 text-primary me-3"><i class="fa-solid fa-robot"></i></div>
+                    <div>
+                        <h5 class="mb-1 fw-bold text-dark">Halo, saya TARA (Tumbakmas Assistant & Recruitment Associate)!</h5>
+                        <p class="mb-0 text-muted small">Kelola biodata Anda, pantau progres lamaran, atau temukan lowongan pekerjaan terbaru di PT Tumbakmas Niagasakti melalui menu di samping.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="candidate-hero mb-4" aria-labelledby="candidateHeroTitle">
+            <div>
+                <span class="hero-kicker">CAREER JOURNEY / 2026</span>
+                <h1 id="candidateHeroTitle">Bangun langkah karier yang berarti.</h1>
+                <p>Lengkapi profil, temukan peran yang tepat, dan ikuti seluruh proses seleksi dengan transparan.</p>
+            </div>
+            <div class="hero-stat"><strong id="profileCompletion">0%</strong><span>Profil selesai</span></div>
+        </section>
+
+        <div class="row">
+            <!-- Sidebar Menu Utama -->
+            <div class="col-lg-3 mb-4">
+                <div class="card card-form p-3">
+                    <h6 class="text-uppercase text-muted fw-bold fs-7 mb-3">Menu Utama</h6>
+                    <div class="nav flex-column main-nav nav-pills" id="main-tabs" role="tablist" aria-orientation="vertical">
+                        
+                        <!-- Menu Biodata Diri dengan Sub-Menu -->
+                        <button class="nav-link text-start" id="menu-utama" data-bs-toggle="pill" data-bs-target="#content-utama" type="button" role="tab">
+                            <i class="fa-solid fa-house me-2"></i>Menu Utama
+                        </button>
+                        <button class="nav-link text-start text-danger" type="button" onclick="logoutCandidate()">
+                            <i class="fa-solid fa-right-from-bracket me-2"></i>Keluar
+                        </button>
+                        <button class="nav-link active text-start" id="menu-biodata" data-bs-toggle="pill" data-bs-target="#content-biodata-parent" aria-expanded="true" type="button" role="tab" onclick="toggleCandidateSubmenu(event)">
+                            <i class="fa-solid fa-id-card me-2"></i>Menu Biodata Diri
+                        </button>
+                        
+                        <!-- Sub-Menu Container (Tampil di bawah Biodata atau dalam bentuk hirarki) -->
+                        <div class="collapse show nav flex-column sub-nav ms-3 my-1" id="sub-biodata-tabs">
+                            <button class="nav-link active text-start py-1" id="sub-datadiri" data-bs-toggle="pill" data-bs-target="#pane-datadiri" type="button"><i class="fa-solid fa-user me-2"></i>Data Diri</button>
+                            <button class="nav-link text-start py-1" id="sub-pendukung" data-bs-toggle="pill" data-bs-target="#pane-pendukung" type="button"><i class="fa-solid fa-folder-open me-2"></i>Data Pendukung</button>
+                            <button class="nav-link text-start py-1" id="sub-pengalaman" data-bs-toggle="pill" data-bs-target="#pane-pengalaman" type="button"><i class="fa-solid fa-briefcase me-2"></i>Pengalaman</button>
+                            <button class="nav-link text-start py-1" id="sub-upload" data-bs-toggle="pill" data-bs-target="#pane-upload" type="button"><i class="fa-solid fa-cloud-arrow-up me-2"></i>Upload Dokumen</button>
+                        </div>
+
+                        <!-- Menu Histori Lamaran -->
+                        <button class="nav-link text-start mt-2" id="menu-histori" data-bs-toggle="pill" data-bs-target="#content-histori" type="button" role="tab">
+                            <i class="fa-solid fa-clock-rotate-left me-2"></i>Histori Lamaran
+                        </button>
+
+                        <!-- Menu Lowongan Kerja Terkini -->
+                        <button class="nav-link text-start" id="menu-loker" data-bs-toggle="pill" data-bs-target="#content-loker" type="button" role="tab">
+                            <i class="fa-solid fa-bullhorn me-2"></i>Lowongan Kerja Terkini
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Konten Utama Tab -->
+            <div class="col-lg-9">
+                <div class="tab-content" id="main-tabContent">
+                    <div class="tab-pane fade" id="content-utama" role="tabpanel">
+                        <div class="card card-form p-4 mb-4">
+                            <span class="text-primary fw-bold small text-uppercase">Part of Rodamas Group</span>
+                            <h3 class="fw-bold mt-2">Menu Utama &amp; Budaya Tumbakmas</h3>
+                            <p class="text-muted">Tumbakmas Team mengembangkan diri melalui pelatihan terstruktur, mentoring, umpan balik, dan inovasi berkelanjutan.</p>
+                            <div class="row g-3 mt-1">
+                                <div class="col-md-4"><div class="p-3 border rounded h-100"><strong>Training</strong><p class="small text-muted mb-0">Penguatan kompetensi teknis, K3, dan kepemimpinan.</p></div></div>
+                                <div class="col-md-4"><div class="p-3 border rounded h-100"><strong>Mentoring</strong><p class="small text-muted mb-0">Coaching, feedback, KPI, dan pengembangan karier.</p></div></div>
+                                <div class="col-md-4"><div class="p-3 border rounded h-100"><strong>Inovasi</strong><p class="small text-muted mb-0">Menyederhanakan proses dan menciptakan dampak nyata.</p></div></div>
+                            </div>
+                            <hr>
+                            <h5 class="fw-bold">7 Value Rodamas Group</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge text-bg-primary">Integritas</span><span class="badge text-bg-primary">Rendah Hati</span>
+                                <span class="badge text-bg-primary">Komitmen</span><span class="badge text-bg-primary">Kerja Tim</span>
+                                <span class="badge text-bg-primary">Semangat</span><span class="badge text-bg-primary">Inovasi</span>
+                                <span class="badge text-bg-primary">Pertumbuhan</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PARENT CONTENT: MENU BIODATA DIRI -->
+                    <div class="tab-pane fade show active" id="content-biodata-parent" role="tabpanel">
+                        <div class="tab-content">
+                            
+                            <!-- 1. SUB-MENU: DATA DIRI -->
+                            <div class="tab-pane fade show active" id="pane-datadiri" role="tabpanel">
+                                <div class="card card-form p-4 mb-4">
+                                    <h4 class="fw-bold mb-3 text-primary"><i class="fa-solid fa-user-pen me-2"></i>1. Informasi Data Diri</h4>
+                                    <hr class="mb-4">
+                                    <div class="row g-3">
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-semibold">Nama Lengkap (Sesuai KTP)</label>
+                                            <input type="text" class="form-control" placeholder="Contoh: Yoga Wahyu Riyadi" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Nomor KTP (NIK)</label>
+                                            <input type="text" class="form-control" maxlength="16" placeholder="16 digit NIK">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Nomor KK</label>
+                                            <input type="text" class="form-control" placeholder="16 digit Kartu Keluarga">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Tempat & Tanggal Lahir</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Tempat">
+                                                <input type="date" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Jenis Kelamin & Agama</label>
+                                            <div class="input-group">
+                                                <select class="form-select">
+                                                    <option>Gender</option>
+                                                    <option>Laki-laki</option>
+                                                    <option>Perempuan</option>
+                                                </select>
+                                                <select class="form-select">
+                                                    <option>Agama</option>
+                                                    <option>Islam</option>
+                                                    <option>Kristen/Lainnya</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">No. Telepon / WhatsApp</label>
+                                            <input type="tel" class="form-control" placeholder="08xxxxxxxxxx">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Email Aktif</label>
+                                            <input type="email" class="form-control" placeholder="email@domain.com">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label fw-semibold">Alamat Domisili / Sesuai KTP</label>
+                                            <textarea class="form-control" rows="2" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-primary px-4" onclick="switchSubTab('sub-pendukung', 'pane-pendukung')">Selanjutnya <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. SUB-MENU: DATA PENDUKUNG -->
+                            <div class="tab-pane fade" id="pane-pendukung" role="tabpanel">
+                                <div class="card card-form p-4 mb-4">
+                                    <h4 class="fw-bold mb-3 text-primary"><i class="fa-solid fa-folder-open me-2"></i>2. Data Pendukung (Pendidikan & Administrasi)</h4>
+                                    <hr class="mb-4">
+                                    <h5 class="text-secondary fs-6 fw-bold mb-3">Riwayat Pendidikan Terakhir</h5>
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Jenjang & Jurusan</label>
+                                            <div class="input-group">
+                                                <select class="form-select">
+                                                    <option>Pendidikan</option>
+                                                    <option>SMA/SMK</option>
+                                                    <option>D3</option>
+                                                    <option>S1</option>
+                                                </select>
+                                                <input type="text" class="form-control" placeholder="Contoh: Teknik Industri">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Institusi & Tahun Lulus</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Nama Universitas">
+                                                <input type="number" class="form-control" placeholder="Tahun">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="text-secondary fs-6 fw-bold mb-3">Informasi Perbankan & Atribut</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Nama Bank</label>
+                                            <input type="text" class="form-control" placeholder="BCA / Mandiri">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">No. Rekening</label>
+                                            <input type="text" class="form-control" placeholder="Nomor Rekening">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Ukuran Baju Seragam</label>
+                                            <select class="form-select">
+                                                <option>Pilih Ukuran</option>
+                                                <option>M</option>
+                                                <option>L</option>
+                                                <option>XL</option>
+                                                <option>XXL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 d-flex justify-content-between">
+                                        <button type="button" class="btn btn-outline-secondary px-4" onclick="switchSubTab('sub-datadiri', 'pane-datadiri')"><i class="fa-solid fa-arrow-left me-2"></i>Sebelumnya</button>
+                                        <button type="button" class="btn btn-primary px-4" onclick="switchSubTab('sub-pengalaman', 'pane-pengalaman')">Selanjutnya <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. SUB-MENU: PENGALAMAN -->
+                            <div class="tab-pane fade" id="pane-pengalaman" role="tabpanel">
+                                <div class="card card-form p-4 mb-4">
+                                    <h4 class="fw-bold mb-3 text-primary"><i class="fa-solid fa-briefcase me-2"></i>3. Pengalaman Kerja & Kompetensi Bahasa</h4>
+                                    <hr class="mb-4">
+                                    <div class="border p-3 rounded mb-3 bg-light">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-semibold">Nama Perusahaan</label>
+                                                <input type="text" class="form-control" placeholder="PT / Instansi Sebelumnya">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-semibold">Posisi / Jabatan</label>
+                                                <input type="text" class="form-control" placeholder="Posisi Terakhir">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-semibold">Periode (Tahun)</label>
+                                                <input type="text" class="form-control" placeholder="Contoh: 2022 - 2025">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label fw-semibold">Keterangan</label>
+                                                <input type="text" class="form-control" placeholder="Alasan Keluar / Pencapaian">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-primary btn-sm mb-3"><i class="fa-solid fa-plus me-1"></i> Tambah Pengalaman Lain</button>
+                                    
+                                    <div class="mt-4 d-flex justify-content-between">
+                                        <button type="button" class="btn btn-outline-secondary px-4" onclick="switchSubTab('sub-pendukung', 'pane-pendukung')"><i class="fa-solid fa-arrow-left me-2"></i>Sebelumnya</button>
+                                        <button type="button" class="btn btn-primary px-4" onclick="switchSubTab('sub-upload', 'pane-upload')">Selanjutnya <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. SUB-MENU: UPLOAD DOKUMEN -->
+                            <div class="tab-pane fade" id="pane-upload" role="tabpanel">
+                                <div class="card card-form p-4 mb-4">
+                                    <h4 class="fw-bold mb-3 text-primary"><i class="fa-solid fa-cloud-arrow-up me-2"></i>4. Upload Dokumen Pendukung</h4>
+                                    <hr class="mb-4">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Upload CV / Resume (PDF/DOCX)</label>
+                                            <input type="file" class="form-control" data-document="cv" accept=".pdf,.docx" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Scan / Foto KTP (JPG/PNG)</label>
+                                            <input type="file" class="form-control" accept=".jpg,.jpeg,.png">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Ijazah Terakhir (PDF)</label>
+                                            <input type="file" class="form-control" accept=".pdf">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Pas Foto Terbaru</label>
+                                            <input type="file" class="form-control" accept=".jpg,.jpeg,.png">
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 d-flex justify-content-between">
+                                        <button type="button" class="btn btn-outline-secondary px-4" onclick="switchSubTab('sub-pengalaman', 'pane-pengalaman')"><i class="fa-solid fa-arrow-left me-2"></i>Sebelumnya</button>
+                                        <button type="button" class="btn btn-success px-5 fw-bold" onclick="saveApplication()"><i class="fa-solid fa-paper-plane me-2"></i>Simpan & Selesaikan Biodata</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- MENU 2: HISTORI LAMARAN -->
+                    <div class="tab-pane fade" id="content-histori" role="tabpanel">
+                        <div class="card card-form p-4 mb-4">
+                            <h4 class="fw-bold mb-3 text-primary"><i class="fa-solid fa-clock-rotate-left me-2"></i>Histori & Progres Lamaran Saya</h4>
+                            <hr class="mb-4">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Posisi Dilamar</th>
+                                            <th>Tanggal Apply</th>
+                                            <th>Area Penempatan</th>
+                                            <th>Progres Terkini</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="applicationHistoryBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                            <!-- MENU 3: LOWONGAN KERJA TERKINI -->
+                    <div class="tab-pane fade" id="content-loker" role="tabpanel">
+                        <div class="card card-form p-4 mb-4">
+                            <h4 class="fw-bold mb-3 text-primary"><i class="fa-solid fa-bullhorn me-2"></i>Lowongan Kerja Terkini</h4>
+                            <p class="text-muted small">Temukan posisi karier yang terbuka dan daftarkan diri Anda langsung melalui portal Tumbakmas Niagasakti.</p>
+                            <hr class="mb-4">
+                            
+                            <div class="row g-3" id="jobListingGrid">
+                                <!-- Card Loker 1 -->
+                                <div class="col-md-6">
+                                    <div class="card job-card p-3 h-100">
+                                        <h5 class="fw-bold text-dark mb-1">Area Sales Supervisor</h5>
+                                        <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot me-1 text-danger"></i> Area Madiun & Sekitarnya</p>
+                                        <p class="small text-secondary mb-3">Bertanggung jawab mengelola pencapaian target penjualan, supervisi tim sales, dan ekspansi pasar regional.</p>
+                                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-info text-dark">Full-time</span>
+                                            <button class="btn btn-sm btn-primary px-3" onclick="applyJob('Area Sales Supervisor', 'Area Madiun & Sekitarnya')">Apply Sekarang</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Loker 2 -->
+                                <div class="col-md-6">
+                                    <div class="card job-card p-3 h-100">
+                                        <h5 class="fw-bold text-dark mb-1">Warehouse & Logistics Staff</h5>
+                                        <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot me-1 text-danger"></i> Sales Office Madiun</p>
+                                        <p class="small text-secondary mb-3">Melakukan kontrol stok barang gudang, implementasi 5R, serta pencatatan administrasi logistik harian.</p>
+                                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-info text-dark">Full-time</span>
+                                            <button class="btn btn-sm btn-primary px-3" onclick="applyJob('Warehouse & Logistics Staff', 'Sales Office Madiun')">Apply Sekarang</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING VIRTUAL ASSISTANT (TARA) -->
+    <button class="tara-floating-btn shadow" onclick="toggleTaraChat()" title="Tanya TARA">
+        <i class="fa-solid fa-robot fs-5"></i>
+        <span class="fw-bold small">Tanya TARA</span>
+    </button>
+
+    <!-- Kotak Jendela Chat TARA -->
+    <div class="tara-chat-box" id="taraChatBox">
+        <div class="tara-chat-header">
+            <span><i class="fa-solid fa-robot me-2"></i>TARA (Virtual Assistant)</span>
+            <button type="button" class="btn-close btn-close-white btn-sm" onclick="toggleTaraChat()"></button>
+        </div>
+        <div class="tara-chat-body" id="chatBody">
+            <div class="chat-bubble-tara">
+                Halo! Saya TARA (Tumbakmas Assistant & Recruitment Associate). Ada yang bisa saya bantu terkait pengisian biodata atau informasi lowongan kerja?
+            </div>
+        </div>
+        <div class="tara-chat-footer">
+            <input type="text" class="form-control form-control-sm" id="chatInput" placeholder="Ketik pesan atau pertanyaan..." onkeypress="handleKeyPress(event)">
+            <button class="btn btn-primary btn-sm px-3" onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/recruitment/recruitment.js"></script>
+
+</body>
+</html>
